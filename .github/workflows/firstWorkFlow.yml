@@ -1,12 +1,30 @@
-name: first workflow
-
+  name: first workflow
+env:
+  WORKFLOW_VAR: "This variable declared at workflow level"
 on:
   workflow_dispatch:
   
-#jobs:
-#  firstjob:
-#    runs-on: ubuntu-latest
-#    steps:
-#     - name: firstjob script
-#       shell: bash
-#       run: echo Hello World! This is the first job
+jobs:
+  firstjob:
+    runs-on: ubuntu-latest
+    steps:
+     - name: firstjob script
+       shell: bash
+       run: echo Hello World! This is the first job
+       
+  secondjob:
+    runs-on: ubuntu-latest
+    env:
+      JOB_VAR: "this is job level variable"
+    steps:
+     - name: secondjob script
+       shell: bash
+       run: |
+        echo this is the second job
+        echo lets try this
+     - name: environment variables
+       run: |
+         echo $WORKFLOW_VAR
+         echo $JOB_VAR
+         echo $GITHUB_ACTOR
+         echo $GITHUB_JOB
