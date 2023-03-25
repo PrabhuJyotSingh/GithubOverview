@@ -1,4 +1,4 @@
-  name: first workflow
+name: first workflow
 env:
   WORKFLOW_VAR: "This variable declared at workflow level"
 on:
